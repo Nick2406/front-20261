@@ -44,7 +44,7 @@ label{
 
 input{
   line-height: 1.6;
-  padding: 0.5rem; /* 1rem 16pt = 8pt */
+  padding: 0.5rem;
   border: 1px solid var(--cor-primaria);
   border-radius: 8px;
   margin-bottom: 16px;
