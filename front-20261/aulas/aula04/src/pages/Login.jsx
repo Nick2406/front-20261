@@ -1,11 +1,19 @@
 import { useNavigate } from "react-router";
+import { useAuth } from "../contexts/AuthContext";
 
 function Login (){
+    const {setLogado} = useAuth;
+
     const navigate = useNavigate ();
+
+    const handleEntrar = (e) => {
+        login({username: 'jose@iesb.br', password: '123456'});
+        navigate("/");
+    }
     return (
         <>
             <h1>Login</h1>;
-            <button onClick={() => navigate("/")}>Entrar</button>
+            <button onClick={handleEntrar}>Entrar</button>
         </>
     )
 }

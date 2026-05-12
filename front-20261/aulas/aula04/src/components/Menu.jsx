@@ -1,17 +1,32 @@
 import "./Menu.css"
-
-import { Link, NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { useAuth } from "../contexts/AuthContext";
 
 function Menu() {
-    return <nav>
+    const usuarioId = 0;
+
+    const {logout, usuario} = useAuth;
+
+    const navigate = useNavigate();
+    
+    const handleSair = (e) => {
+        e.preventDefault();
+        logout();
+        navigate("/login");
+    };
+
+    return (
+    <nav>
+        <h1>{usuario.nome}</h1>
         <ul>
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to={`/Perfil/${usuarioId}`}>Perfil</NavLink></li>
             <li><NavLink to="/Setting">Config</NavLink></li>
             <li><NavLink to="/About">Sobre</NavLink></li>
-            <li><Link to="/Login">Sair</Link></li>
+            <li><a href="#" onClick={handleSair}>Sair</a></li>
         </ul>
     </nav>
+    )
 }
     
 export default Menu;
