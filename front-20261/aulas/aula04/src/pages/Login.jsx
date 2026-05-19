@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
 
 function Login (){
-    const {setLogado} = useAuth;
+    const {login} = useAuth();
 
     const navigate = useNavigate ();
 
@@ -12,7 +12,7 @@ function Login (){
     }
     return (
         <>
-            <h1>Login</h1>;
+            <h1>Login</h1>
             <button onClick={handleEntrar}>Entrar</button>
         </>
     )

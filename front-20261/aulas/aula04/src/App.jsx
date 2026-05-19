@@ -16,7 +16,7 @@ function App(){
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
-          <Route path="/Perfil" element={<Perfil />} />
+          <Route path="/Perfil/:id" element={<Perfil />} />
           <Route path="/Setting" element={<Setting />} />
           <Route path="*" element={<Erro404 />} />
         </Route>
