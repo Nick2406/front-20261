@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #fff;
     color: var(--cor-texto);
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -43,7 +43,7 @@ section {
 }
 
 article {
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 16px;
     border: 1px solid var(--cor-fundo);
 }
@@ -65,7 +65,7 @@ nav a {
     text-decoration: none;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     body {
         display: flex;
     }
