@@ -1,0 +1,35 @@
+aside {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: none;
+}
+
+nav a {
+    color: var(--cor-texto);
+    text-decoration: none;
+}
+
+@media (width >= 768px) {
+    aside {
+        display: flex;
+        min-height: 100vh;
+        width: 250px;
+        background-color: var(--cor-fundo);
+        padding: 24px;
+    }
+
+    nav ul {
+        list-style: none;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        padding: 16px 0;
+        gap: 16px;
+    }
+
+    nav div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
