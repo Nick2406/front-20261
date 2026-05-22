@@ -1,11 +1,11 @@
 import './Header.css';
 
-function Header() {
+function Header(props) {
   return (
     <header>
       <div>
-        <h1>Olá, Aluno!</h1>
-        <h2>Bem-vindo ao Aluno Online</h2>
+        <h1>{props.titulo}</h1>
+        <h2>{props.subtitulo}</h2>
       </div>
       <img src="src/assets/avatar.svg" alt="avatar" />
     </header>
