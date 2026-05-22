@@ -4,9 +4,58 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    background-color: #fff;
 }
 
-.error-message {
-    color: red;
+.login-page section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 16px;
+    border: 1px solid var(--cor-fundo);
+    width: 100%; 
+    max-width: 400px;
+    padding: 24px;
+}
+
+.login-page img {
+    width: 120px;
+    height: 120px;
+    margin-top: 16px;
+}
+
+.login-page h1 {
+    color: var(--cor-texto);
+    padding: 16px;
+    font-size: 24px;
+}
+
+.login-page form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-page button {
+    font-weight: 600;
+    padding: 12px;
+    background-color: var(--cor-texto);
+    color: var(--cor-fundo);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: opacity 0.2s;
+}
+
+.login-page button:hover {
+    opacity: 0.9;
+}
+
+.login-page footer {
+    text-align: center;
+    margin-top: 24px;
+    color: var(--cor-texto);
     font-size: 14px;
 }
