@@ -1,9 +1,10 @@
-import Layout from '../components/Layout';
+import Header from '../components/Header';
 
 function Faltas() {
   return (
-    <Layout tituloHeader="Minhas Faltas" subtituloHeader="Histórico de Faltas por Semestre">
-      <section>
+    <>
+    <Header titulo="Minhas Faltas" subtitulo="Histórico de Faltas por Semestre" />
+    <section>
         <table className="tabela-padrão">
             <thead>
                 <tr>
@@ -39,7 +40,7 @@ function Faltas() {
             </tbody>
         </table>
       </section>
-    </Layout>
+    </>
   );
 }
 

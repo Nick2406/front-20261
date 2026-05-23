@@ -1,8 +1,9 @@
-import Layout from '../components/Layout';
+import Header from '../components/Header';
 
 function Requerimentos() {
   return (
-    <Layout tituloHeader="Meus Requerimentos" subtituloHeader="Faça solicitações online para a secretaria">
+    <>
+    <Header titulo="Meus Requerimentos" subtitulo="Faça solicitações online para a secretaria" />
       <section>
         <table className="tabela-padrão">
             <thead>
@@ -41,7 +42,7 @@ function Requerimentos() {
             </tbody>
         </table>
       </section>
-    </Layout>
+    </>
   );
 }
 

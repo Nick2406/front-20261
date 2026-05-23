@@ -1,14 +1,25 @@
+import { Routes, Route } from 'react-router-dom';
+import Layout from './layouts/Layout';
+import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Notas from './pages/Notas';
-import Requerimentos from './pages/Requerimentos';
-import Boletos from './pages/Boletos';
 import Faltas from './pages/Faltas';
-import Login from './pages/Login';
+import Boletos from './pages/Boletos';
+import Requerimentos from './pages/Requerimentos';
 
 function App() {
   return (
-    <Login />
-  )
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="notas" element={<Notas />} />
+        <Route path="faltas" element={<Faltas />} />
+        <Route path="boletos" element={<Boletos />} />
+        <Route path="requerimentos" element={<Requerimentos />} />
+      </Route>
+    </Routes>
+  );
 }
 
 export default App;

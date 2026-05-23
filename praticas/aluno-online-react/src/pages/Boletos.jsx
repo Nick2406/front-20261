@@ -1,8 +1,9 @@
-import Layout from '../components/Layout';
+import Header from '../components/Header';
 
 function Boletos() {
   return (
-    <Layout tituloHeader="Meus Boletos" subtituloHeader="Histórico de Pagamentos">
+    <>
+      <Header titulo="Meus Boletos" subtitulo="Histórico de Pagamentos" />
       <section>
         <table className="tabela-padrão">
             <thead>
@@ -36,7 +37,7 @@ function Boletos() {
             </tbody>
         </table>
       </section>
-    </Layout>
+    </>
   );
 }
 

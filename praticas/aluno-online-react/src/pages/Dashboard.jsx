@@ -1,17 +1,13 @@
-import Card from '../components/Card';
-import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
+import Card from '../components/Card';
 import './Dashboard.css';
 
 function Dashboard() {
   return (
-    <div className="layout-geral">
-      <Sidebar />
-      <main className="conteudo-principal">
-        <Header />
-        
-        <section className="dashboard-grid">
-          <Card titulo="Mural de Avisos">
+    <>
+      <Header titulo="Olá, Aluno!" subtitulo="Bem-vindo ao Aluno Online" />
+      <section className="dashboard-grid">
+        <Card titulo="Mural de Avisos">
             <p>Inscrição para o projeto de extensão</p>
             <p>Eleição para representante de turma</p>
           </Card>
@@ -27,9 +23,8 @@ function Dashboard() {
             <p>Manutenção de Software e DevOps</p>
             <p>Governança de TI</p>
           </Card>
-        </section>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
 
