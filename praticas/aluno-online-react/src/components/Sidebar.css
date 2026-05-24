@@ -57,4 +57,13 @@
         color: var(--cor-fundo);
         font-weight: 600;
     }
+
+    .btn-sair {
+        background: none; 
+        border: none; 
+        font-size: inherit; 
+        text-align: left; 
+        cursor: pointer; 
+        width: 100%;
+    }
 }

@@ -1,33 +1,32 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import Input from '../components/Input';
 import './Login.css';
 
 function Login() {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [erros, setErros] = useState({});
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
     let listaErros = {};
 
-    if (!email) {
-      listaErros.email = 'O e-mail é obrigatório.';
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      listaErros.email = 'Insira um e-mail válido.';
-    }
-
-    if (!senha) {
-      listaErros.senha = 'A senha é obrigatória.';
-    } else if (senha.length < 6) {
-      listaErros.senha = 'A senha deve ter pelo menos 6 caracteres.';
-    }
+    if (!email) listaErros.email = 'O e-mail é obrigatório.';
+    if (!senha) listaErros.senha = 'A senha é obrigatória.';
 
     if (Object.keys(listaErros).length > 0) {
       setErros(listaErros);
     } else {
       setErros({});
-      alert('Login realizado com sucesso! (Simulação)');
+      
+      login({ nome: 'Nícolas Ferreira', email: email });
+      
+      navigate('/');
     }
   };
 

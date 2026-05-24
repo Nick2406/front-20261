@@ -1,13 +1,18 @@
+import { useAuth } from '../contexts/AuthContext';
 import './Header.css';
 
 function Header(props) {
+  const { usuario } = useAuth();
+
   return (
-    <header>
-      <div>
+    <header className="header-container">
+      <div className="header-textos">
         <h1>{props.titulo}</h1>
-        <h2>{props.subtitulo}</h2>
+        <p>{props.subtitulo}</p>
       </div>
-      <img src="src/assets/avatar.svg" alt="avatar" />
+      <div className="header-user">
+        <span>{usuario ? usuario.nome : 'Usuário'}</span>
+      </div>
     </header>
   );
 }
