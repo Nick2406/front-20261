@@ -72,7 +72,7 @@ docker compose exec app npm run dev
 2. Adicione os arquivos ao controle de versão. Substitua `#ID` pelo número da Issue.
 ```bash
 git add .
-git commit -m "feat: conclui pratica07. Fecha #ID"
+git commit -m feat: conclui pratica07. Fecha #ID
 ```
 3. Envie suas alterações para o GitHub.
 ```bash
