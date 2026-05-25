@@ -1,0 +1,17 @@
+.card-box {
+    background-color: #fff;
+    border-radius: 16px;
+    border: 1px solid var(--cor-fundo);
+}
+
+.card-box h2 {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    padding: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.card-conteudo {
+    padding: 12px;
+}

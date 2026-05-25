@@ -1,0 +1,13 @@
+@media (width >= 768px) {
+    .layout-geral {
+        display: flex;
+        min-height: 100vh;
+    }
+}
+
+.conteudo-principal {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
