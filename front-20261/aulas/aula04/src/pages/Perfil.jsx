@@ -23,7 +23,7 @@ function Perfil(){
             required: "Email é obrigatório",
         },
         nascimento: {
-            validade: (value) => Date.parse(value) <= Date.now || "Data inválida",
+            validade: (value) => Date.parse(`${value} 00:00:00 UTC`) <= Date.now || "Data inválida",
         },
         telefone: {
             min: { value: 0, message: "Telefone é um número" },
