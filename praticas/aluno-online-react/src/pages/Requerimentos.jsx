@@ -1,9 +1,14 @@
-import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 
 function Requerimentos() {
-  return (
-    <>
-    <Header titulo="Meus Requerimentos" subtitulo="Faça solicitações online para a secretaria" />
+    return (
+      <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h2>Meus Requerimentos</h2>
+          <Link to="/requerimentos/novo" className="btn-novo">
+            ➕ Novo Requerimento
+          </Link>
+        </div>
       <section>
         <table className="tabela-padrão">
             <thead>
@@ -42,8 +47,9 @@ function Requerimentos() {
             </tbody>
         </table>
       </section>
-    </>
-  );
-}
-
-export default Requerimentos;
+        <p>Nenhum requerimento encontrado.</p>
+      </div>
+    );
+  }
+  
+  export default Requerimentos;
