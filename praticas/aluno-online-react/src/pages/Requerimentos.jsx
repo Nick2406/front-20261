@@ -1,55 +1,61 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { listarRequerimentos } from '../services/requerimentoService';
 
 function Requerimentos() {
-    return (
-      <div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h2>Meus Requerimentos</h2>
-          <Link to="/requerimentos/novo" className="btn-novo">
-            ➕ Novo Requerimento
-          </Link>
-        </div>
-      <section>
-        <table className="tabela-padrão">
-            <thead>
-                <tr>
-                    <th>Tipo de Requerimento</th>
-                    <th>Data de Solicitação</th>
-                    <th>Situação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Revisão de Menção</td>
-                    <td>15/12/2025</td>
-                    <td>Indeferido</td>
-                </tr>
-                <tr>
-                    <td>Dispensa de Disciplina</td>
-                    <td>12/06/2025</td>
-                    <td>Indeferido</td>
-                </tr>
-                <tr>
-                    <td>Trancamento de Matrícula</td>
-                    <td>05/01/2024</td>
-                     <td>Deferido</td>
-                </tr>
-                <tr>
-                    <td>Mudança de Turno</td>
-                    <td>10/10/2023</td>
-                    <td>Deferido</td>
-                </tr>
-                <tr>
-                    <td>Renovação de Matrícula</td>
-                    <td>20/02/2023</td>
-                    <td>Deferido</td>
-                </tr>
-            </tbody>
-        </table>
-      </section>
-        <p>Nenhum requerimento encontrado.</p>
+  const [lista, setLista] = useState([]);
+  const [erro, setErro] = useState('');
+
+  useEffect(() => {
+    async function carregarDados() {
+      try {
+        const dados = await listarRequerimentos();
+        setLista(dados);
+      } catch (err) {
+        setErro('Não foi possível carregar os requerimentos.');
+        console.error(err);
+      }
+    }
+    carregarDados();
+  }, []);
+
+  return (
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>Meus Requerimentos</h2>
+        <Link to="/requerimentos/novo" className="btn-novo">
+          ➕ Novo Requerimento
+        </Link>
       </div>
-    );
-  }
-  
-  export default Requerimentos;
+
+      {erro && <p style={{ color: 'red' }}>{erro}</p>}
+
+      {lista.length === 0 ? (
+        <p>Nenhum requerimento encontrado.</p>
+      ) : (
+        <table className="tabela-requerimentos">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            {lista.map((req) => (
+              <tr key={req.id}>
+                <td>{req.id}</td>
+                <td>{req.tipo}</td>
+                <td>{req.descricao}</td>
+                <td>{req.data}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+}
+
+export default Requerimentos;

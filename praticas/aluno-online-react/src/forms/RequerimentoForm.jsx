@@ -1,23 +1,24 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { cadastrarRequerimento } from '../services/requerimentoService'; // Importe o serviço
 import './RequerimentoForm.css';
 
 function RequerimentoForm() {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors }
-  } = useForm();
-
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const navigate = useNavigate();
-
   const dataAtual = new Date().toISOString().split('T')[0];
 
-  const onSubmit = (data) => {
-    console.log('Dados do requerimento salvos com sucesso:', data); 
-    reset();
-    navigate('/requerimentos');
+  const onSubmit = async (data) => {
+    try {
+      await cadastrarRequerimento(data);
+      
+      console.log('Dados salvos na API.', data);
+      reset();
+      navigate('/requerimentos');
+    } catch (error) {
+      console.error('Erro ao submeter formulário:', error);
+      alert('Houve um erro ao salvar o requerimento. Tente novamente.');
+    }
   };
 
   return (
