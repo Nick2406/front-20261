@@ -7,6 +7,7 @@ import Notas from './pages/Notas';
 import Faltas from './pages/Faltas';
 import Boletos from './pages/Boletos';
 import Requerimentos from './pages/Requerimentos';
+import RequerimentoForm from './forms/RequerimentoForm';
 
 function App() {
   const { autenticado } = useAuth();
@@ -20,7 +21,10 @@ function App() {
         <Route path="notas" element={<Notas />} />
         <Route path="faltas" element={<Faltas />} />
         <Route path="boletos" element={<Boletos />} />
-        <Route path="requerimentos" element={<Requerimentos />} />
+        <Route path="requerimentos">
+        <Route index element={<Requerimentos />} />
+        <Route path="novo" element={<RequerimentoForm />} />
+      </Route>
       </Route>
       
       <Route path="*" element={<Navigate to={autenticado ? "/" : "/login"} />} />
