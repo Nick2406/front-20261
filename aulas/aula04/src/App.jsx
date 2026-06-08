@@ -1,27 +1,25 @@
-import { Route, Routes } from 'react-router';
-import { useAuth } from './contexts/AuthContext';
-import Layout from './layouts/Layout';
-import About from './pages/About';
-import Erro404 from './pages/Erro404';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Perfil from './pages/Perfil';
-import Setting from './pages/Setting';
+import { Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Settings from "./pages/Settings";
+import Erro404 from "./pages/Erro404";
+import Layout from "./layouts/Layout";
+import Login from "./pages/Login";
+import Perfil from "./pages/Perfil";
 
-function App(){
-  const { logado } = useAuth
+function App() {
   return (
     <Routes>
-      {logado} ? ()
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Perfil/:id" element={<Perfil />} />
-          <Route path="/Setting" element={<Setting />} />
-          <Route path="*" element={<Erro404 />} />
-        </Route>
-        <Route path="/login" element={<Login />} />
-      </Routes>
-  )
-      }
-export default App
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="perfil/:id" element={<Perfil />} />
+        <Route path="about" element={<About />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<Erro404 />} />
+    </Routes>
+  );
+}
+
+export default App;

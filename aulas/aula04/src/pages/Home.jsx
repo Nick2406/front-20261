@@ -1,49 +1,84 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 function Home() {
-    const [carregando, setCarregando] = useState(true)
+  const [carregando, setCarregando] = useState(true);
   const [tarefas, setTarefas] = useState([]);
 
-  useEffect (() => {
-    const timeout = setTimeout (() => {
-        setTarefas([
-        { id: 1, nome: "Implementar Trabalho", situacao: "aberta" },
-        { id: 2, nome: "Entregar Práticas", situacao: "pendente" },
-        { id: 3, nome: "Revisar Conteudo", situacao: "aberta" },
-        { id: 4, nome: "Assistir Video-aulas", situacao: "concluída" },
+  const carregarDados = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    setTarefas([
+      { id: 1, nome: "Fazer o trabalho", status: "aberta" },
+      { id: 2, nome: "Estudar API REST", status: "aberta" },
+      { id: 3, nome: "Entregar as práticas", status: "pendente" },
+      { id: 4, nome: "Revisar conteudo", status: "pendente" },
+      { id: 5, nome: "Assistir video-aulas", status: "concluida" },
     ]);
-    setCarregando(false);
-    }, 3000);
+  };
 
-    return () => clearTimeout(timeout);
+  useEffect(() => {
+    const disparar = async () => {
+      await carregarDados();
+      setCarregando(false);
+    };
+    disparar();
   }, []);
-  
 
   return (
     <>
-      <h1>Página Principal</h1>
-      {carregando? (
-        <p>Aguarde...</p>
-      ) : ( 
-      <table className="border rounded border-gray-300">
-        <thead className="bg-gray-300">
-          <tr>
-            <th className="p-1">ID</th>
-            <th>Tarefa</th>
-            <th>Situação</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tarefas.map((item) => (
-            <tr key={item.id}>
-              <td className="p-1 m-1">{item.id}</td>
-              <td className="p-1 m-1">{item.nome}</td>
-              <td className="p-1 m-1">{item.situacao}</td>
+      <h1>Página Inicial</h1>
+      <h2>Minhas Tarefas do Dia</h2>
+      {carregando ? (
+        <>
+          <p>Aguarde...</p>
+          <table className="border border-gray-300 rounded animate-pulse">
+            <thead>
+              <tr className="bg-gray-300">
+                <th className="py-2 px-8"></th>
+                <th className="py-2 px-8"></th>
+                <th className="py-2 px-8"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div className="my-1 mx-1 py-0.5 rounded bg-gray-300"></div></td>
+                <td><div className="my-1 mx-1 py-0.5 rounded bg-gray-300"></div></td>
+                <td><div className="my-1 mx-1 py-0.5 rounded bg-gray-300"></div></td>
+              </tr>
+              <tr>
+                <td><div className="my-1 mx-1 py-0.5 rounded bg-gray-300"></div></td>
+                <td><div className="my-1 mx-1 py-0.5 rounded bg-gray-300"></div></td>
+                <td><div className="my-1 mx-1 py-0.5 rounded bg-gray-300"></div></td>
+              </tr>
+              <tr>
+                <td><div className="my-1 mx-1 py-0.5 rounded bg-gray-300"></div></td>
+                <td><div className="my-1 mx-1 py-0.5 rounded bg-gray-300"></div></td>
+                <td><div className="my-1 mx-1 py-0.5 rounded bg-gray-300"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tarefa</th>
+              <th>Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {tarefas.map((item, index) => (
+              <tr key={index}>
+                <td>{item.id}</td>
+                <td>{item.nome}</td>
+                <td>{item.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </>
+  );
+}
 
-
-export default Home
+export default Home;

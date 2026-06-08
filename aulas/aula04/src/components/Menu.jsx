@@ -1,32 +1,27 @@
-import "./Menu.css"
-import { NavLink, useNavigate } from "react-router";
-import { useAuth } from "../contexts/AuthContext";
+import "./Menu.css";
+import { Link, NavLink } from "react-router";
+import { useAuthContext } from "../contexts/AuthContext";
 
 function Menu() {
-    const usuarioId = 0;
+  const { logout, usuario } = useAuthContext();
 
-    const {logout, usuario} = useAuth();
+  const handleSair = () => {
+    logout();
+  }
 
-    const navigate = useNavigate();
-    
-    const handleSair = (e) => {
-        e.preventDefault();
-        logout();
-        navigate("/login");
-    };
-
-    return (
+  return (
     <nav>
-        <h1>{usuario.nome}</h1>
-        <ul>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to={`/Perfil/${usuarioId}`}>Perfil</NavLink></li>
-            <li><NavLink to="/Setting">Config</NavLink></li>
-            <li><NavLink to="/About">Sobre</NavLink></li>
-            <li><a href="#" onClick={handleSair}>Sair</a></li>
-        </ul>
+      <h4>{usuario.nome}</h4>
+      <h5>{usuario.email}</h5>
+      <ul>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to={`/perfil/${usuario.id}`}>Perfil</NavLink></li>
+        <li><NavLink to="/about">Sobre</NavLink></li>
+        <li><NavLink to="/settings">Configurações</NavLink></li>
+        <li><Link to="/" onClick={handleSair}>Sair</Link></li>
+      </ul>
     </nav>
-    )
+  );
 }
-    
+
 export default Menu;
