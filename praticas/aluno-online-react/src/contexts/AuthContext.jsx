@@ -1,21 +1,19 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState } from 'react';
 import { loginApi } from '../services/authService';
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [autenticado, setAutenticado] = useState(false);
-  const [usuarioLogado, setUsuarioLogado] = useState(null);
-
-  useEffect(() => {
+  const [autenticado, setAutenticado] = useState(() => {
     const token = localStorage.getItem('@AlunoOnline:token');
-    const user = localStorage.getItem('@AlunoOnline:user');
+    return !!token;
+  });
 
-    if (token && user) {
-      setAutenticado(true);
-      setUsuarioLogado(JSON.parse(user));
-    }
-  }, []);
+  const [usuarioLogado, setUsuarioLogado] = useState(() => {
+    const user = localStorage.getItem('@AlunoOnline:user');
+    return user ? JSON.parse(user) : null;
+  });
 
   async function login(email, senha) {
     try {
