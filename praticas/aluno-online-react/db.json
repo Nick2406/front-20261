@@ -1,17 +1,17 @@
 {
+  "usuarios": [
+    {
+      "id": "1",
+      "email": "aluno@infnet.edu.br",
+      "senha": "123"
+    }
+  ],
   "requerimentos": [
     {
       "id": "1",
       "tipo": "Trancamento",
       "descricao": "Solicito o trancamento da matrícula por motivos de intercâmbio.",
       "data": "2026-06-08"
-    },
-    {
-      "tipo": "Dispensa",
-      "descricao": "ddddddddddddddddddddd",
-      "data": "2026-06-08",
-      "id": "XPGIjAU-3EE"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }

@@ -12,7 +12,7 @@ function Login() {
   const [senha, setSenha] = useState('');
   const [erros, setErros] = useState({});
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     let listaErros = {};
 
@@ -24,48 +24,51 @@ function Login() {
     } else {
       setErros({});
       
-      login({ nome: 'Nícolas Ferreira', email: email });
-      
-      navigate('/');
+      try {
+        await login(email, senha);
+        navigate('/');
+      } catch (error) {
+        console.error("Falha na autenticação:", error);
+      }
     }
   };
 
   return (
-  <div className="login-page">
-    <section>
-      <img src="src/assets/learn.svg" alt="learn" /> 
-      <h1>Aluno Online</h1>
-      
-      <form onSubmit={handleSubmit}>
-        <Input
-          id="email"
-          label="E-mail"
-          type="email"
-          placeholder="exemplo@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          erro={erros.email}
-        />
+    <div className="login-page">
+      <section>
+        <img src="src/assets/learn.svg" alt="learn" /> 
+        <h1>Aluno Online</h1>
+        
+        <form onSubmit={handleSubmit}>
+          <Input
+            id="email"
+            label="E-mail"
+            type="email"
+            placeholder="exemplo@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            erro={erros.email}
+          />
 
-        <Input
-          id="senha"
-          label="Senha"
-          type="password"
-          placeholder="Digite sua senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          erro={erros.senha}
-        />
+          <Input
+            id="senha"
+            label="Senha"
+            type="password"
+            placeholder="Digite sua senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            erro={erros.senha}
+          />
 
-        <button type="submit">Entrar</button>
-      </form>
-    </section>
+          <button type="submit">Entrar</button>
+        </form>
+      </section>
 
-    <footer>
-      <p>© 2026 Aluno Online. Todos os direitos reservados.</p>
-    </footer>
-  </div>
-);
+      <footer>
+        <p>© 2026 Aluno Online. Todos os direitos reservados.</p>
+      </footer>
+    </div>
+  );
 }
 
 export default Login;
